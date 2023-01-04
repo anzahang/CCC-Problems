@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class redo {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		String keyword = sc.nextLine();
+		String phrase = sc.nextLine();
+		phrase = decrypt(phrase);
+		int[] shifts = shifts(keyword);
+		phrase = encode(phrase, shifts);
+		System.out.println(phrase);
+	}
+
+	private static String decrypt(String phrase) {
+		String s = "";
+		
+		for(int i=0;i<phrase.length();i++) {
+			char c = phrase.charAt(i);
+			if(Character.isAlphabetic(c)) {
+				s+=c;
+			}
+				
+		}
+		return s;
+	}
+
+	private static String encode(String word, int[] shifts) {
+		String s = "";
+		for (int i = 0; i < word.length(); i++) {
+			char c = word.charAt(i);
+			int difference = c - 'A';
+			difference = (difference + shifts[i % shifts.length]) % 26;
+			c = (char) ('A' + difference);
+			s += c;
+		}
+		return s;
+	}
+
+	private static int[] shifts(String key) {
+		int[] shifts = new int[key.length()];
+		for (int i = 0; i < key.length(); i++) {
+			shifts[i] = key.charAt(i) - 'A';
+		}
+		return shifts;
+	}
+
+	
+
+	}
