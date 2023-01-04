@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		for(int i=0;i<n;i++) {
+			int a = sc.nextInt();
+			int b = sc.nextInt();
+			sc.nextLine();
+			System.out.println(countPrime(a,b));
+		}
+
+	}
+
+	private static int countPrime(int a, int b) {
+		int counter = 0;
+		for(int i=a;i<b;i++) {
+			if(isPrime(i)) {
+				counter++;
+			}
+		}
+		return counter;
+	}
+
+	private static boolean isPrime(int num) {
+		if(num == 1) {
+			return false;
+		}else {
+		boolean flag = false;
+		for(int i=2;i<=num/2;i++) {
+			if(num % i==0) {
+				flag = true;
+				break;
+			}
+		}
+		return !flag;
+		}
+		
+		
+	}
+
+}
