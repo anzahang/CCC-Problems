@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class OccupyParking {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		// get number of parking spots
+		int counter = 0;
+		int spots = sc.nextInt();
+		// save the spots to array
+
+		String row1 = sc.next();
+		String row2 = sc.next();
+
+		
+		for(int i=0;i<spots;i++) {
+			char c1 = row1.charAt(i);
+			char c2 = row2.charAt(i);
+			if(c1 == c2 && c1 == 'C') {
+				counter++;
+			}
+		}
+		
+		System.out.println(counter);
+
+	}
+
+}
