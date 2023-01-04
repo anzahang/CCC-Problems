@@ -1,0 +1,62 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+	static Scanner sc = new Scanner(System.in);
+	static ArrayList<Character> vowels = null;
+
+	public static void main(String[] args) {
+		Character[] ar = { 'a', 'e', 'i', 'o', 'u' };
+		vowels = new ArrayList<Character>(Arrays.asList(ar));
+
+		int n = sc.nextInt();
+		sc.nextLine();
+
+		for (int i = 0; i < n; i++) {
+			poem();
+		}
+	}
+
+	private static void poem() {
+		String[] syllables = new String[4];
+		for(int i=0;i<4;i++) {
+			syllables[i] = lastSyllable(sc.nextLine().toLowerCase());
+		}
+		String rhyme = getRhyme(syllables);
+		System.out.println(rhyme);
+	}
+
+	private static String getRhyme(String[] syllables) {
+		if(syllables[0].equals(syllables[1])&& syllables[1].equals(syllables[2])&& syllables[2].equals(syllables[3])) {
+			return "perfect";
+		}else if(syllables[0].equals(syllables[1])&& syllables[2].equals(syllables[3])) {
+			return "even";
+		}else if(syllables[0].equals(syllables[2])&& syllables[1].equals(syllables[3])) {
+			return "cross";
+		}else if(syllables[0].equals(syllables[3])&& syllables[2].equals(syllables[1])) {
+			return "shell";
+		}else {
+			return "free";
+		}
+	}
+
+	private static String lastSyllable(String line) {
+		String[] words = line.split(" ");
+		String lastWord = words[words.length-1];
+		return getSyllableFromWord(lastWord);
+	}
+
+	private static String getSyllableFromWord(String lastWord) {
+		String syllable = "";
+		for(int i=lastWord.length()-1;i>=0;i--) {
+			char c = lastWord.charAt(i);
+			if(vowels.contains(c)) {
+				return c+syllable;
+			}else {
+				syllable= c+syllable;
+			}
+		}
+		return syllable;
+	}
+}
