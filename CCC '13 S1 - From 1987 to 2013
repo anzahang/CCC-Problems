@@ -1,0 +1,33 @@
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class DistinctYear {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		int currentYear = sc.nextInt();
+		
+		for(int i=currentYear+1;;i++) {
+			if(isDistinctYear(i)) {
+				System.out.println(i);
+				break;
+			}
+		}
+		
+	}
+
+	private static boolean isDistinctYear(int year) {
+		HashSet<Integer> digits = new HashSet();
+		while(year > 0) {
+			int remainder = year%10;
+			if(digits.contains(remainder)) {
+				return false;
+			}
+			digits.add(remainder);
+			year = year/10;
+		}
+		return true;
+	}
+
+}
