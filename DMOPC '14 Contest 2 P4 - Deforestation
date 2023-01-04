@@ -1,0 +1,42 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+public class deforestationnoTLE {
+
+	public static void main(String[] args) throws Exception{
+		 InputStreamReader r=new InputStreamReader(System.in);      
+         BufferedReader br=new BufferedReader(r);    
+		ArrayList<Integer> trees = new ArrayList<Integer>();
+		int arraysize = Integer.parseInt(br.readLine());
+		
+		for(int i=0;i<arraysize;i++) {
+			int tree = Integer.parseInt(br.readLine());
+			trees.add(tree);
+		}
+		
+		int numTrees = Integer.parseInt(br.readLine());
+		int range1=0;
+		int range2=0;
+		for(int i=0;i<numTrees;i++) {
+			String line = br.readLine();
+			String[] parts = line.split(" ");
+			range1 = Integer.parseInt(parts[0]);
+			range2 = Integer.parseInt(parts[1]);
+		
+			totalMass(range1,range2, trees);
+		}
+		
+		br.close();	
+		
+	}
+	
+	private static void totalMass(int range1, int range2, ArrayList<Integer> trees) {
+		int mass= 0;
+		for(int i=range1;i<=range2;i++) {
+			mass += trees.get(i);
+		}
+		System.out.println(mass);
+	}
+
+}
