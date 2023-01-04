@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class GermanNouns {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int input = sc.nextInt();
+		sc.nextLine();
+		String sentence = "";
+		for(int i=0;i<input;i++) {
+			sentence = sc.nextLine();
+			System.out.println(isNoun(sentence));
+		}
+
+		
+		
+	}
+
+	private static int isNoun(String sentence) {
+		int counter =0;
+		for(int i=0;i<sentence.length();i++) {
+			char c = sentence.charAt(i);
+			if(c >= 'A' && c <= 'Z') {
+				counter++;
+				
+			}
+		}
+		return counter;
+	}
+
+}
