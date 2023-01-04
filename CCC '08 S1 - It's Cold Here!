@@ -1,0 +1,28 @@
+import java.util.Hashtable;
+import java.util.Scanner;
+
+public class ItsColdHere {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		Hashtable<Integer,String> city = new Hashtable<Integer, String>();
+		
+		String name = "";
+		int temp = 0;
+		int coldest = 200;
+		while (!name.equals("Waterloo")) {
+			name = sc.next();
+			temp = sc.nextInt();
+			city.put(temp, name);
+			if(temp < coldest) {
+				coldest = temp;
+			}
+			
+		}
+		
+		System.out.println(city.get(coldest));
+		
+	}
+
+}
