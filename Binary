@@ -1,0 +1,62 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class Binary {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int input = sc.nextInt();
+		
+		for(int i=0;i<input;i++) {
+			toBinary(sc.nextInt());
+			
+		}
+	}
+		
+	public static void toBinary(int num) {
+		/*int binary = 0;
+		ArrayList<Integer> remainders = new ArrayList<Integer>();
+		int remainder = 0;
+		while(num != 0) {
+			remainder = num % 2;
+			num = num /2;
+		}
+		for(int i=0;i<remainders.size();i++) {
+			remainders.add(remainder);
+		}
+		Collections.reverse(remainders);
+		return remainders;
+		*/
+		if(num == 0) {
+			System.out.println("0000");
+			return;
+		}
+		String binaryString = "";
+		
+		while(num != 0) {
+			int remainder = num % 2;
+			binaryString = remainder + binaryString;
+			num = num/2;
+			
+		}
+		int remainder = binaryString.length() % 4;
+		if(remainder != 0) {
+			int compensate = 4-remainder;
+			for(int i =0;i<compensate;i++) {
+				binaryString = "0" + binaryString;
+			}
+		}
+		
+		for(int i=0;i<binaryString.length();i++) {
+			System.out.print(binaryString.charAt(i));
+			if(i % 4 == 3){
+				System.out.print(" ");
+			}
+		
+		}
+		System.out.println();
+	}
+
+}
