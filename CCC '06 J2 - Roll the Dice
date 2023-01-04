@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class RollTheDice {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		int dice1;
+		int dice2;
+		int count = 0;
+
+		dice1 = sc.nextInt();
+		dice2 = sc.nextInt();
+
+		// take the numbers from the first die and take all the numbers from the second
+		// die and and them together one number at a time from the first die. If the sum
+		// of the numbers from the two die equals to ten, a counter increases by 1.
+
+		for (int i = 1; i <= dice1;i++) {// i is the numbers on dice1
+			for(int j = 1;j <= dice2;j++) {
+				if(i+j==10) {
+					count++;
+				}
+			}
+		}
+
+		if(count ==1) {
+			System.out.println("There is " + count + " way to get the sum 10.");
+		}else {
+			System.out.println("There are " + count + " ways to get the sum 10.");
+		}
+		
+	}
+
+}
