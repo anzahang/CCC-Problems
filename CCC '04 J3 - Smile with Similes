@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class SmileWithSimiles {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int numNoun; 
+		int numAdjective;
+		String[] adjectives = null;
+		String[] nouns = null;
+		
+		numAdjective = sc.nextInt();
+		numNoun = sc.nextInt();
+		
+		sc.nextLine();
+		
+		adjectives = new String[numAdjective];
+		nouns = new String[numNoun];
+		
+		for(int i=0;i<numAdjective;i++) {
+			adjectives[i] = sc.nextLine();
+		}
+		for(int i=0;i<numNoun;i++) {
+			nouns[i] = sc.nextLine();
+		}
+		
+		//pick up the first adjective and match it with all the nouns and then go to the next adjective and match it with all the nouns etc.
+		
+		for(int i=0;i<adjectives.length;i++) {
+			String adjective = null;
+			adjective = adjectives[i];
+			for(int j=0;j<nouns.length;j++) {
+				String noun = null;
+				noun = nouns[j];
+				System.out.println(adjective + " as " + noun);
+			}
+		}
+		
+		
+	}
+
+}
