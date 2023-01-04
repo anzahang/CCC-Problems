@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class WinningScore {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int three1, two1, one1;
+		int three2, two2, one2;
+		
+		three1 = sc.nextInt();
+		two1 = sc.nextInt();
+		one1 = sc.nextInt();
+		three2 = sc.nextInt();
+		two2 = sc.nextInt();
+		one2 = sc.nextInt();
+		
+		int totalpoint1 = (three1 * 3) + (two1 *2) + (one1);
+		int totalpoint2 = (three2 * 3) + (two2 *2) + (one2);
+		
+		if(totalpoint1 > totalpoint2) {
+			System.out.println("A");
+		}else if(totalpoint1 < totalpoint2){
+			System.out.println("B");
+		}else {
+			System.out.println("T");
+		}
+
+	}
+
+}
