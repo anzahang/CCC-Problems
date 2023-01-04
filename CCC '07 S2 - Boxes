@@ -1,0 +1,65 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int l,w,h,n,j,m;
+		Box[]b;
+		Box hold;
+		
+		n = sc.nextInt();
+		b = new Box[n];
+		for(int i=0;i<n;i++) {
+			l=sc.nextInt();
+			w=sc.nextInt();
+			h=sc.nextInt();
+			b[i] = new Box (l,w,h);
+		}
+		for(int i=0;i<n;i++) {
+			j = i-1;
+			hold = b[i];
+			while(j>=0&&b[j].volume > hold.volume){
+				b[j+1] = b[j];
+				j--;
+			}
+			b[j+1] = hold;
+		}
+		m=sc.nextInt();
+		for(int i=0;i<m;i++) {
+			l=sc.nextInt();
+			w=sc.nextInt();
+			h=sc.nextInt();
+			hold = new Box(l,w,h);
+			j=0;
+			while(j<n && (hold.l>b [j].l || hold.w > b[j].w || hold.h > b[j].h)) {
+				j++;
+			}
+			if(j < n) {
+				System.out.println(b[j].volume);
+			}else {
+				System.out.println(("Item does not fit."));
+			}
+		}
+	}
+	
+}
+class Box {
+	public int l,w,h;
+	public long volume;
+	
+	public Box (int l,int w,int h) {
+		int[] sides = new int[3];
+		sides[0] = l;
+		sides[1]=w;
+		sides[2]=h;
+		
+		Arrays.sort(sides);
+		this.l=sides[0];
+		this.w=sides[1];
+		this.h=sides[2];
+		volume = l * w * h;
+	}
+}
