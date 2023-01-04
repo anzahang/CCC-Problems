@@ -1,0 +1,28 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Sandwich {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int layers = sc.nextInt();
+		sc.nextLine();
+		String instructions = sc.nextLine();
+		ArrayList<Integer> sandwich = new ArrayList<Integer>();
+		
+		for(int i=0;i<instructions.length();i++) {
+			char c = instructions.charAt(i);
+			if(c == '0') {
+				sandwich.add(i+1);
+			}else {
+				sandwich.add(0, i+1);
+			}
+		}
+		for(int i=0;i<sandwich.size();i++) {
+			System.out.println(sandwich.get(i));
+		}
+		
+	}
+
+}
