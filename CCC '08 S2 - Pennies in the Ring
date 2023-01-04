@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+public class PenniesInTheRing {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+	/*	int radius = -1;
+		int pennies = 0;
+		double r2;
+		radius = sc.nextInt();
+		while (radius != 0) {
+			pennies = getPoints(radius);
+			System.out.println(pennies);
+
+			radius = sc.nextInt();
+		}
+
+	}
+
+	private static int getPoints(int radius) {
+		int c = 0;
+		for (int x = -radius; x <= radius; x++) {
+			for (int y = -radius; y <= radius; y++) {
+				if ((x * x) + (y * y) <= radius * radius) {
+					c++;
+				}
+			}
+		}
+		return c;*/
+		
+		
+
+		
+
+			
+				// TODO Auto-generated method stub
+				
+				int r = sc.nextInt();
+				while (r!=0) {
+					System.out.println(getDotsInTheRing(r));
+					r = sc.nextInt();
+				}
+			}
+
+			private static int getDotsInTheRing(int r) {
+				// TODO Auto-generated method stub
+				int pointsOnAxis = r*4+1;
+				
+				int sum=0;
+				for (int y=1;y<r;y++) {
+					double approximateX = Math.sqrt(r*r - y*y);
+					int x = (int)approximateX +1 ;
+					
+					if (x*x+y*y > r*r) {
+						sum += x-1;
+					} else {
+						sum += x;
+					}
+				}
+				
+				return pointsOnAxis + sum*4;
+			
+		
+
+	}
+
+}
