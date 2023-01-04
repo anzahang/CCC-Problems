@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class DealOrNoDeal {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int [] cases = { 100,500,1000,5000,10000,25000,50000,100000,500000,1000000};
+		
+		int openedCases;
+		int total = 0;
+		int offer;
+		
+		openedCases = sc.nextInt();
+		
+		int caseNum;
+		
+		for(int i=0;i<openedCases;i++) {
+			caseNum = sc.nextInt();
+			cases[caseNum-1] = 0;
+		}
+		
+		offer = sc.nextInt();
+		
+		for(int i=0;i<cases.length;i++) {
+			total += cases[i];
+			
+		}
+		total = total / (10-openedCases);
+		
+		if(offer < total) {
+			System.out.println("no deal");
+		}else {
+			System.out.println("deal");
+		}
+		
+	}
+
+}
