@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class TimeToDecompress {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		int L = sc.nextInt();
+		String N = null;
+		String S = null;
+		int n = 0;
+		
+		for (int i = 0; i < L; i++) {
+			N = sc.next();
+			S = sc.next();
+
+			n = Integer.parseInt(N);
+			for (int j = 0; j < n; j++) {
+				System.out.print(S);
+
+			}
+			System.out.println();
+		}
+
+	}
+
+}
