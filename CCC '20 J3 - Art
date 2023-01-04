@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+public class Art {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		
+		int numDots = sc.nextInt();
+		sc.nextLine();
+		Coordinate[] dots = new Coordinate[numDots]; 
+		
+		for(int i=0;i<numDots;i++) {
+			String line = sc.nextLine();
+			
+			String[] sCoordinate = line.split(",");
+			
+			Coordinate coord = new Coordinate();
+			coord.x=Integer.parseInt(sCoordinate[0]);
+			coord.y=Integer.parseInt(sCoordinate[1]);
+			
+			dots[i] = coord;
+		}
+		
+		Coordinate maxCord = new Coordinate();
+		maxCord.x = 0;
+		maxCord.y = 0;
+		Coordinate minCord = new Coordinate();
+		minCord.x = Integer.MAX_VALUE;
+		minCord.y = Integer.MAX_VALUE;
+		for(int i=0;i<dots.length;i++) {
+			if(dots[i].x > maxCord.x) {
+				maxCord.x=dots[i].x;
+			}
+			
+			if(dots[i].y > maxCord.y) {
+				maxCord.y=dots[i].y;
+			}
+			if(dots[i].x < minCord.x) {
+				minCord.x = dots[i].x;
+			}
+			if(dots[i].y < minCord.y) {
+				minCord.y = dots[i].y;
+			}
+		}
+		
+		
+		System.out.println((minCord.x - 1) + "," + (minCord.y - 1));
+		System.out.println((maxCord.x + 1) + "," + (maxCord.y + 1));
+		
+	}
+
+}
+
+class Coordinate {
+	int x=0;
+	int y=0;
+	
+}
