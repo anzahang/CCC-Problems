@@ -18,7 +18,7 @@ public class DistinctYear {
 	}
 
 	private static boolean isDistinctYear(int year) {
-		HashSet<Integer> digits = new HashSet();
+		HashSet<Integer> digits = new HashSet<Integer>();
 		while(year > 0) {
 			int remainder = year%10;
 			if(digits.contains(remainder)) {
