@@ -1,0 +1,28 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		long total =0;
+		long n = sc.nextLong();
+		long k = sc.nextLong();
+		ArrayList<Long> scores = new ArrayList<>();
+		for(int i=0;i<n;i++) {
+			scores.add(sc.nextLong());
+		}
+		Collections.sort(scores,Collections.reverseOrder());
+		for(int i=0;i<k;i++) {
+		Long score = scores.get(i);
+		if(score <= 0) {
+			break;
+		}else {
+			total += score;
+		}
+		}
+		System.out.println(total);
+	}
+
+}
