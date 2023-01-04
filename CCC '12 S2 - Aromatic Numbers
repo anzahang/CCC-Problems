@@ -1,0 +1,64 @@
+import java.util.Scanner;
+
+public class AromaticNumbers1 {
+
+	public static void main(String[] args) throws Exception {
+		Scanner sc = new Scanner(System.in);
+		
+		String aromatic = sc.nextLine();
+		
+		int total = 0;
+		String[] elements = getElements(aromatic);
+		int previousTotal = getValue(elements[0]);
+
+		for(int i=1;i<elements.length;i++) {
+			int currentTotal = getValue(elements[i]);
+			if(base(elements[i])> base(elements[i-1])) {
+				total -= previousTotal;
+			}else {
+				total += previousTotal;
+			}
+			previousTotal = currentTotal;
+		}
+		total += previousTotal;
+		
+		System.out.println(total);
+	}
+
+	private static int base(String element)throws Exception {
+		switch(element.charAt(1)) {
+		case 'I':
+			return 1;
+		case 'V':
+			return 5;
+		case 'X':
+			return 10;
+		case 'L':
+			return 50;
+		case 'C':
+			return 100;
+		case 'D':
+			return 500;
+		case 'M':
+			return 1000;
+		}
+		throw new Exception("Invalid Input");
+		
+	}
+
+	private static int getValue(String element) throws Exception {
+		int a = element.charAt(0) - '0';
+		return a*base(element);
+	}
+
+
+	private static String[] getElements(String aromatic) {
+		String elements[] = new String[aromatic.length()/2];
+		for(int i=0;i<elements.length;i++) {
+			String s = "" + aromatic.charAt(i*2) + aromatic.charAt(i*2+1);
+			elements[i] = s;
+		}
+		return elements;
+	}
+
+}
