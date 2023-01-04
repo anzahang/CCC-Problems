@@ -1,0 +1,55 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		String equation = sc.nextLine();
+
+		System.out.println(solve(equation));
+
+	}
+
+	private static Double solve(String equation) {
+		String[] parts = equation.split(" ");
+		Stack<Double> nums = new Stack();
+		Stack<Character> ops = new Stack();
+		for (String part : parts) {
+			if (isOp(part)) {
+				double part1 = nums.pop();
+				double part2 = nums.pop();
+				switch (part.charAt(0)) {
+				case '+':
+					nums.push(part1 + part2);
+					break;
+				case '-':
+					nums.push(part2 - part1);
+					break;
+				case '*':
+					nums.push(part1 * part2);
+					break;
+				case '/':
+					nums.push(part2 / part1);
+					break;
+				case '%':
+					nums.push(part2 % part1);
+					break;
+				case '^':
+					nums.push(Math.pow(part2, part1));
+					break;
+				}
+			} else {
+				nums.push(Double.parseDouble(part));
+			}
+		}
+		return nums.pop();
+	}
+
+	private static boolean isOp(String part) {
+		char c = part.charAt(0);
+		return c=='+'||c=='-'||c=='*'||c=='/'||c=='%'||c=='^';
+	}
+
+}
