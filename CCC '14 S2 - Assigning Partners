@@ -1,0 +1,45 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class AssigningPartners {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		int input = sc.nextInt();
+		sc.nextLine();
+		HashMap<String, String> partners = new HashMap<String, String>();
+		String line1 = sc.nextLine();
+		String line2 = sc.nextLine();
+		String[] names1 = line1.split(" ");
+		String[] names2 = line2.split(" ");
+		for (int i = 0; i < names1.length; i++) {
+			String name1 = names1[i];
+			String name2 = names2[i];
+			if (name1.equals(name2)) {
+				System.out.println("bad");
+				return;
+
+			}
+
+			if (partners.keySet().contains(name2)) {
+				String value = partners.get(name2);
+				if (!name1.equals(value)) {
+					System.out.println("bad");
+					return;
+				}
+			} else if(partners.keySet().contains(name2)){
+				String value = partners.get(name1);
+				if (!name2.equals(value)) {
+					System.out.println("bad");
+					return;
+				}
+			}else {
+				partners.put(name2, name1);
+				partners.put(name1, name2);
+			}
+		}
+		System.out.println("good");
+	}
+
+}
