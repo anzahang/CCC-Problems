@@ -1,0 +1,42 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class stackImplementation {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		boolean begin = true;
+		Stack<String> Instructions = new Stack<>();
+		Instructions.push("HOME");
+		while(begin) {
+			String s = sc.nextLine();
+			if(s.equals("SCHOOL")) {
+				begin = false;
+				break;
+			}else {
+				Instructions.push(s);
+			}
+		}
+		int i=0;
+		boolean end = true;
+		while(!Instructions.isEmpty()) {
+				String s = Instructions.pop();
+				String s2 = Instructions.pop();
+				if(s2.equals("HOME")) {
+					if(s.equals("R")) {
+						System.out.println("Turn LEFT into your HOME.");
+					}else {
+						System.out.println("Turn RIGHT into your HOME.");
+					}
+				}else {
+					if(s.equals("R")) {
+						System.out.println("Turn LEFT onto " + s2+ " street.");
+					}else {
+						System.out.println("Turn RIGHT onto " + s2+ " street.");
+					}
+				}
+		}
+	}
+
+}
