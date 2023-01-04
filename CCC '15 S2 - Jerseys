@@ -1,0 +1,54 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		int j = sc.nextInt();
+		sc.nextLine();
+		int a = sc.nextInt();
+		sc.nextLine();
+		int c =0;
+		int[] jerseys = new int[j];
+		for(int i=0;i<j;i++) {
+			String s = sc.nextLine();
+			jerseys[i] = convert(s);
+		}
+		for(int i=0;i<a;i++) {
+			String s  = sc.next();
+			int size = convert(s);
+			int num = sc.nextInt();
+			if(isRightJersey(size,num-1,jerseys)) {
+				c++;
+			}
+			sc.nextLine();
+		}
+		System.out.println(c);
+	}
+
+	private static int convert(String s) {
+		if(s.equals("S")) {
+			return 1;
+		}else if(s.equals("M")) {
+			return 2;
+		}else {
+			return 3;
+		}
+	}
+
+	private static boolean isRightJersey(int size, int num, int[] jerseys) {
+		int s = jerseys[num];
+		if(s == 0) {
+			return false;
+		}
+		if(s >= size) {
+			jerseys[num] = 0;
+			return true;
+		}else {
+			return false;
+		}
+	}
+}
