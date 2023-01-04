@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class Ragaman {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		String line1 = sc.next();
+		String line2 = sc.next();
+		int a = 0;
+
+		char[] firstLine = line1.toCharArray();
+		char[] secondLine = line2.toCharArray();
+		// scan each character in the second line and look for that character in the
+		// first line, when found, replace the character in the first line with a null
+		// if the character is a *, then nothing needs to be done.
+		for (int i = 0; i < secondLine.length; i++) {
+			if (secondLine[i] != '*') {
+				int index = findIndex(firstLine, secondLine[i]);
+				if (index >= 0) {
+					firstLine[index] = 0;
+				} else {
+					System.out.println("N");
+					return;
+				}
+			}
+		}
+
+		System.out.println("A");
+
+	}
+
+	private static int findIndex(char[] firstLine, char c) {
+		for(int i=0;i<firstLine.length;i++) {
+			if(firstLine[i] == c) {
+				return i;
+			}
+		}
+		
+		return -1;
+	}
+
+	private static char[] stringToArray(String line2) {
+		char[] ch = new char[line2.length()];
+		for (int i = 0; i < line2.length(); i++) {
+			ch[i] = line2.charAt(i);
+		}
+		return ch;
+	}
+
+}
