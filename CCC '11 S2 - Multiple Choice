@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class MultipleChoice {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		ArrayList<String> choices = new ArrayList<String>();
+		ArrayList<String> answers = new ArrayList<String>();
+		int c = 0;
+		int lines = sc.nextInt();
+		sc.nextLine();
+		
+		for(int i=0;i<lines;i++) {
+			String s = sc.nextLine();
+			choices.add(s);
+		}
+		for(int i=0;i<lines;i++) {
+			String s = sc.nextLine();
+			answers.add(s);
+		}
+		for(int i=0;i<choices.size();i++) {
+			if(choices.get(i).equals(answers.get(i))) {
+				c++;
+			}
+		}
+		System.out.println(c);
+
+	}
+
+}
