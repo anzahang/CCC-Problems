@@ -1,0 +1,37 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class Klopka {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n =sc.nextInt();
+		ArrayList<Integer> x = new ArrayList<Integer>();
+		ArrayList<Integer> y = new ArrayList<Integer>();
+		for(int i=0;i<n;i++) {
+			int X =sc.nextInt();
+			x.add(X);
+			int Y = sc.nextInt();
+			y.add(Y);
+		}
+		
+		int minX = Collections.min(x);
+		int minY = Collections.min(y);
+		int maxX = Collections.max(x);
+		int maxY = Collections.max(y);
+		
+		int cordx = maxX - minX;
+		int cordy = maxY - minY;
+		
+		if(cordx < cordy) {
+			cordx = cordy;
+		}else {
+			cordy = cordx;
+		}
+		int area = cordx * cordy;
+		System.out.println(area);
+	}
+
+}
