@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class CoolNumbers {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int min = sc.nextInt();
+		int max = sc.nextInt();
+		int c =0;
+		
+		for(int i=min;i<=max;i++) {
+			int squareRoot = (int)Math.sqrt(i);
+			int cubeRoot = (int)java.lang.Math.cbrt(i);
+			
+			if((squareRoot * squareRoot) == i && (cubeRoot * cubeRoot * cubeRoot) == i) {
+				c++;
+			}
+			
+		}
+		
+		System.out.println(c);
+	}
+
+}
