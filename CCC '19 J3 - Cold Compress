@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class ColdCompress {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		int L = sc.nextInt();
+		String encoded;
+		for (int i = 0; i < L; i++) {
+			encoded = sc.next();
+			System.out.println(decode(encoded));
+		}
+
+	}
+
+	private static String decode(String encoded) {
+		String ret = "";
+
+		char previous = 0;
+		int counter = 0;
+		encoded+= "\n";
+		for (int i = 0; i < encoded.length(); i++) {
+			char temp = encoded.charAt(i);
+			if (temp == previous) {
+				counter++;
+			} else {
+				if (counter != 0) {
+					ret += counter + " " + previous + " ";
+				}
+				previous = temp;
+				counter = 1;
+
+			}
+		}
+
+		return ret;
+
+	}
+
+}
