@@ -1,0 +1,18 @@
+plainText = input()
+cypher1 = input()
+cypher2 = input()
+answer = ""
+
+#Find out which letters are which
+newLetters = {'A': None, 'B': None, 'C': None, 'D':None, 'E': None, 'F': None, 'G': None, 'H': None, 'I':None, 'J':None, 'K':None, 'L':None, 'M':None, 'N':None, 'O':None, 'P':None, 'Q':None, 'R':None, 'S':None, 'T':None, 'U':None, 'V':None, 'W':None, 'X':None, 'Y':None, 'Z':None, ' ':None}
+
+for x in range (len(plainText)):
+    newLetters[cypher1[x]] = plainText[x]
+
+for y in cypher2:
+  if y in cypher1:
+    answer += newLetters[y]
+  else:
+    answer += '.'
+    
+print(answer)
