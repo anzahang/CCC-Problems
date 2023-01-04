@@ -1,0 +1,55 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		//read in input
+		//count and remove the characters that don't exist in input2 that are in input1 and the new string is newWord
+		//iterate through input2 and count which characters exist in input2 that aren't in newWord
+		//sum the counters and return the sum
+		
+		Scanner sc = new Scanner(System.in);
+		
+		String input1 = sc.nextLine();
+		String input2 = sc.nextLine();
+		
+		HashMap<Character,Integer> word1 = transfer(input1);
+		HashMap<Character,Integer> word2 = transfer(input2);
+		
+		int sum = sumUpDifference(word1,word2);
+		System.out.println(sum);
+	}
+
+	private static int sumUpDifference(HashMap<Character, Integer> word1, HashMap<Character, Integer> word2) {
+		int sum = 0;
+		
+		for(char c:word1.keySet()) {
+			if(word2.containsKey(c)) {
+				sum+= Math.abs(word1.get(c) - word2.get(c));
+			}else {
+				sum += word1.get(c);
+			}
+		}
+		for(char c: word2.keySet()) {
+			if(!word1.containsKey(c)) {
+				sum += word2.get(c);
+			}
+		}
+		return sum;
+	}
+
+	private static HashMap<Character, Integer> transfer(String input) {
+		HashMap<Character,Integer> word = new HashMap<Character,Integer>();
+		for(int i=0;i<input.length();i++) {
+			char c = input.charAt(i);
+			if(word.containsKey(c)) {
+				int count = word.get(c);
+				word.put(c, count+1);
+			}else {
+				word.put(c, 1);
+			}
+		}
+		return word;
+	}
+}
