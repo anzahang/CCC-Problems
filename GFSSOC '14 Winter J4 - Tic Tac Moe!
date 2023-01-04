@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+public class Main {
+	static char[][]board = new char[3][3];
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		for(int i=0;i<3;i++) {
+			String line = sc.nextLine();
+			
+			for(int j=0;j<3;j++) {
+				board[i][j]= line.charAt(j);
+			}
+		}
+		
+		boolean griffy = check('O');
+		boolean timothy=check('X');
+		
+		if(griffy) {
+			if(timothy) {
+				System.out.println("Error, redo");
+			}else {
+				System.out.println("Griffy");
+			}
+		}else {
+			if(timothy) {
+				System.out.println("Timothy");
+			}else {
+				System.out.println("Tie");
+			}
+		}
+	}
+	private static boolean check(char c) {
+		for(int i=0;i<3;i++) {
+			if(check(c, board[i][0],board[i][1],board[i][2])) {
+				return true;
+			}
+		}
+		
+		for(int j=0;j<3;j++) {
+			if(check(c, board[0][j],board[1][j],board[2][j])) {
+				return true;
+			}
+		}
+		
+		if(check(c,board[0][0],board[1][1],board[2][2])) {
+			return true;
+		}
+		
+		return check(c,board[2][0],board[1][1],board[0][2]);
+		
+	}
+	private static boolean check(char c, char d, char e, char f) {
+		
+		return(d==c && e == c && f == c);
+	}
+	
+}
