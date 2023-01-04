@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		double h =0;
+		for(int i=0;i<n;i++) {
+			double v =sc.nextDouble();
+			double angle = sc.nextDouble();
+			double t = sc.nextDouble();
+			sc.nextLine();
+			
+			double o = Math.toRadians(angle);
+			double k = Math.sin(o);
+			h+= k*v*t;
+		}
+		double total = 2 * 9.8 * h;
+		double velocity = Math.sqrt(total);
+		System.out.println(Math.round(velocity));
+	}
+
+}
