@@ -1,0 +1,39 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class PartyInvitation {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		int numFriends = sc.nextInt();
+		
+		ArrayList friends = new ArrayList();
+		
+		for (int i = 1; i <= numFriends; i++) {
+			friends.add(i);
+		}
+		
+		int rounds = sc.nextInt();
+		
+		for(int i=0;i<rounds;i++) {
+			int r = sc.nextInt();
+			
+			friends = removeFromList(friends,r);
+		}
+		for(int i=0;i<friends.size();i++) {
+		System.out.println(friends.get(i));
+		}
+		
+	}
+
+	private static ArrayList removeFromList(ArrayList friends, int r) {
+			int remainder = friends.size() % r;
+			int largest = friends.size()-1-remainder;
+		for(int i=largest;i>=0;i-=r) {
+			friends.remove(i);
+		}
+		return friends;
+	}
+
+}
