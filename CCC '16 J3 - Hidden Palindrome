@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class HiddenPolindrome {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		String word = sc.nextLine();
+		String subString;
+
+		for (int length = word.length(); length >= 1; length--) {
+			for (int start = 0; start <= word.length()-length; start++) {
+				subString = word.substring(start, start+length);
+				if (Palindrome(subString)) {
+					System.out.println(subString.length());
+					return;
+				}
+			}
+		}
+
+	}
+
+	private static boolean Palindrome(String subString) {
+
+		// char lastLetter = subString.charAt(subString.length());
+		if(subString.length() == 1) {
+			return true;
+		}
+		for (int i = 0; i < subString.length()/2; i++) {
+			char first = subString.charAt(i);
+			char last = subString.charAt(subString.length() -1 -i);
+			if (first != last) {
+				return false;
+			}
+
+		}
+		return true;
+	}
+
+}
