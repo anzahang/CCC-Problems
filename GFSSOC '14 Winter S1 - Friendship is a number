@@ -1,0 +1,42 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		ArrayList<Programmer> programmers = readIn();
+		Collections.sort(programmers,(x,y)->y.total() - x.total());
+		for(int i=0;i<3;i++) {
+			System.out.println(programmers.get(i).ID);
+		}
+	}
+	static private ArrayList<Programmer> readIn(){
+		Scanner sc = new Scanner(System.in);
+		ArrayList<Programmer> programmers = new ArrayList<Programmer>();
+		int n = sc.nextInt();
+			for(int i=0;i<n;i++) {
+				Programmer programmer = new Programmer();
+				programmer.ID = i+1;
+				int numTraits = sc.nextInt();
+				for(int j=0;j<numTraits;j++) {
+					programmer.t.add(sc.nextInt());
+				}
+				programmers.add(programmer);
+			}
+			return programmers;
+	}
+}
+
+class Programmer{
+	int ID;
+	
+	ArrayList<Integer> t = new ArrayList<Integer>();
+	int total() {
+		int product = 1;
+		for(int t:t) {
+			product *=t;
+		}
+		return product;
+	}
+}
