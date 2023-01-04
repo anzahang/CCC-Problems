@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		HashMap<Integer, ArrayList<String>> googleDrive = new HashMap<>();
+		sc.nextInt();
+
+		int m = sc.nextInt();
+
+		for (int i = 0; i < m; i++) {
+			sc.nextInt();
+			int q = sc.nextInt();
+			sc.nextLine();
+			String name = sc.nextLine();
+			ArrayList<String> list;
+			if (googleDrive.containsKey(q)) {
+				list = googleDrive.get(q);
+			} else {
+				list = new ArrayList<String>();
+				googleDrive.put(q, list);
+			}
+
+			list.add(name);
+		}
+		int y = sc.nextInt();
+		ArrayList<String> output = googleDrive.get(y);
+		if (output != null) {
+			for (int i = 0; i < output.size(); i++) {
+				System.out.println(output.get(i));
+			}
+		}
+
+	}
+
+}
