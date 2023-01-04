@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class SoundsFishy {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int depth1;
+		int depth2;
+		int depth3;
+		int depth4;
+		
+		depth1=sc.nextInt();
+		depth2=sc.nextInt();
+		depth3=sc.nextInt();
+		depth4=sc.nextInt();
+		
+		if(depth1 < depth2 && depth2<depth3 && depth3 < depth4) {
+			System.out.println("Fish Rising");
+		}else if(depth1 > depth2 && depth2>depth3 && depth3 > depth4) {
+			System.out.println("Fish Diving");
+		}else if(depth1 == depth2 && depth2 == depth3 && depth3 == depth4 ) {
+			System.out.println("Fish At Constant Depth");
+		}else {
+			System.out.println("No Fish");
+		}
+	}
+
+}
