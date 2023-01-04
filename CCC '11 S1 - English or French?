@@ -1,0 +1,56 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class EnglishOrFrench {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int ct = 0;
+		int cs = 0;
+		int lines = sc.nextInt();
+		sc.nextLine();
+		ArrayList<int[]> list=new ArrayList<int[]>();
+		for(int i=0;i<lines;i++) {
+			String sentence = sc.nextLine();
+			ct += isEnglish(sentence);
+			cs += isFrench(sentence);
+		}
+		
+		if(ct == cs) {
+			System.out.println("French");
+		}else if(ct > cs) {
+			System.out.println("English");
+		}else if(ct < cs) {
+			System.out.println("French");
+		}
+		sc.close();
+
+	
+		
+	}
+
+	private static int isFrench(String sentence) {
+		int cs = 0;
+		for(int i=0;i<sentence.length();i++) {
+			char c = sentence.charAt(i);
+			if(c == 'S' || c == 's') {
+			cs++;
+			}
+		}
+		return cs;
+	}
+
+	private static int isEnglish(String sentence) {
+		int ct = 0;
+		for(int i=0;i<sentence.length();i++) {
+			char c = sentence.charAt(i);
+			if(c == 'T' || c == 't') {
+				ct++;
+			}
+		}
+		
+		return ct;
+		
+	}
+
+}
