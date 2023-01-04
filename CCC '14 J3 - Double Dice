@@ -1,0 +1,30 @@
+import java.util.Scanner;
+public class DoubleDice {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		
+		int antonia = 100;
+		int david = 100;
+		int roll1;
+		int roll2;
+		
+		int rounds = sc.nextInt();
+		
+		for(int i=0;i<rounds;i++) {
+			roll1 = sc.nextInt();
+			roll2 = sc.nextInt();
+			
+			if(roll1 < roll2) {
+				antonia = antonia - roll2;
+			}else if(roll1 > roll2) {
+				david = david - roll1;
+			}
+		}
+
+		System.out.println(antonia);
+		System.out.println(david);
+		
+	}
+
+}
