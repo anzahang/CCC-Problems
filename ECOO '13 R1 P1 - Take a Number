@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class TakeANumber {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		int current = sc.nextInt();
+		sc.nextLine();
+		String take = "TAKE";
+		String serve = "SERVE";
+		String close = "CLOSE";
+		String eof = "EOF";
+		int takeCount = 0;
+		int serveCount = 0;
+		String action = "something";
+		System.out.println();
+		while (!action.equals(eof)) {
+			action = sc.nextLine();
+			if (action.equals(take)) {
+				takeCount++;
+				current++;
+				if(current == 1000) {
+					current = 1;
+				}
+			} else if (action.equals(serve)) {
+				serveCount++;
+			} else if (action.equals(close)) {
+				System.out.print(takeCount + " ");
+				System.out.print(takeCount - serveCount + " ");
+				System.out.println(current);
+				takeCount = 0;
+				serveCount = 0;
+
+			}
+
+		}
+
+	}
+
+}
