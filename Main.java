@@ -1,73 +1,65 @@
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-        int numMessages = Integer.parseInt(in.nextLine());
-        String[] messages = new String[numMessages];
-        for (int i = 0; i < numMessages; i++){
-            messages[i] = in.nextLine(); }
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		int n=0;
+		int k=0;
+		for(int i=0;i<num;i++) {
+			n =sc.nextInt();
+			k =sc.nextInt();
+			doCase(n,k);
+		}
+		
+		
+	}
 
-        ArrayList<String> waitTime = new ArrayList<>();
-        int currentTime = 0;
-        HashMap<Integer, Integer> queue = new HashMap<>();
+	private static void doCase(int n, int k) {
+		ArrayList<String> list = combination(n,k);
+			System.out.println("	The bit patterns are");
+			for(String s: list) {
+			System.out.println(s);
+			}
+		}
+	
 
-        for (int i = 0; i < numMessages; i++){
-            String command = messages[i].split(" ")[0];
-            int magnitude = Integer.parseInt(messages[i].split(" ")[1]);
-            switch (command){
-                case "W":
-                    currentTime += (magnitude - 1);
-                    break;
-                case "R":
-                    queue.put(magnitude, currentTime);
-                    currentTime++;
-                    break;
-                case "S":
-                    boolean found = false;
-                    for (int key:queue.keySet()){
-                        if (key == magnitude){
-                            waitTime.add((key + " " + (currentTime - queue.get(key))));
-                            queue.remove(key, queue.get(key));
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (!found) {
-                        waitTime.add(magnitude + " -9");
-                        break;
-                    }
-                    currentTime++;
-            }
-        }
-        if (queue.size() > 0){
-            for (int key : queue.keySet()){
-                waitTime.add(key + " " + -1);
-            }
-        }
+	private static ArrayList<String> combination(int n, int k) {
+		ArrayList<String> list = new ArrayList<>();
+		if(k>n) {
+			return list;
+		}
+		if(k==n) {
+			String s = "";
+			for(int i=0;i<n;i++) {
+				s+="1";
+			}
+			list.add(s);
+			return list;
+		}
+		if(k==0) {
+			String s = "";
+			for(int i=0;i<n;i++) {
+				s+="0";
+			}
+			list.add(s);
+			return list;
+		}
+		ArrayList<String> subList = combination(n-1,k-1);
+		for(String s: subList) {
+			list.add("1"+ s);
+			
+		}
+		subList = combination(n-1,k);
+		for(String s: subList) {
+			list.add("0"+s);
+		}
+		return list;
+	}
 
-        for (int i = 0; i < waitTime.size(); i++){
-            for (int x = 0; x < waitTime.size(); x++){
+	
+	
 
-                String[] one = waitTime.get(i).split(" ");
-                String[] two = waitTime.get(x).split(" ");
-                if (one[0].equals(two[0]) && !waitTime.get(i).equals(waitTime.get(x))){
-                        waitTime.set(x, (one[0] + " " + (Integer.parseInt(one[1]) + Integer.parseInt(two[1]))));
-                        waitTime.remove(waitTime.get(i));
-                }
-            }
-        }
-        Collections.sort(waitTime);
-        ArrayList<String> printed = new ArrayList<>();
-        for (String output:waitTime){
-            if (!printed.contains(output)){
-                System.out.println(output);
-                printed.add(output);
-            }
-        }
-    }
 }
