@@ -1,0 +1,60 @@
+import java.util.Scanner;
+
+public class Main {
+	static char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String output = "";
+		String s = sc.nextLine();
+		for (int i = 0; i < s.length(); i++) {
+			char c = s.charAt(i);
+			if (isVowel(c)) {
+				output = output + c;
+			} else {
+				output = output + (char) c + (char) nearestVowel(c) + (char) nextConsonant(c);
+			}
+		}
+		System.out.println(output);
+	}
+
+	private static char nextConsonant(char c) {
+		if (c == 'z') {
+			return 'z';
+		}
+		c += 1;
+		while (isVowel(c)) {
+			c++;
+		}
+		return c;
+	}
+
+	private static boolean isVowel(char c) {
+		for (int i = 0; i < vowels.length; i++) {
+			if (c == vowels[i]) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private static char nearestVowel(char c) {
+		char c1 = (char) (c - 1);
+		char c2 = (char) (c + 1);
+		while (!isVowel(c1) && !isVowel(c2)) {
+			if (c1 != 'a') {
+				c1--;
+			}
+			if (c2 != 'z') {
+				c2++;
+			}
+		}
+		if (isVowel(c1)) {
+			return c1;
+		} else if (isVowel(c2)) {
+			return c2;
+		}
+		return 0;
+	}
+
+}
